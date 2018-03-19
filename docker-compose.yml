@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+
+  esc-bot:
+    container_name: esc-bot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '80:80'
+
+  flask-api:
+    container_name: flask-api
+    build:
+      context: flask/.
+      dockerfile: Dockerfile
+    ports:
+      - '5000:5000'
+    environment:
+     - client_id=${client_id}
+     - client_secret=${client_secret}

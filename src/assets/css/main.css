@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+body {
+	background-color: #f1f1f1;
+}
+
+.App {
+	width:100%;
+	max-width:100%;
+}
+
+.Header {
+	width:100%;
+	padding:1em;
+	text-align: center;
+}
+.Header-logo {
+}
+
+.content {
+	padding-top:2em;
+}
+
+.rsc-container {
+	margin:auto;
+}
+
+.navbar-brand {
+	display: flex;
+	align-items: center;
+}
+
+.navbar-brand>img {
+	float:left;
+	height:50px;
+	padding-right: 5px;
+}

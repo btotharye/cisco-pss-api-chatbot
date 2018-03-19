@@ -1,0 +1,20 @@
+{
+  "name": "cisco-pss-chatbot",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "react": "^16.2.0",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.0",
+    "react-simple-chatbot": "^0.2.9",
+    "styled-components": "^3.1.6"
+  },
+  "scripts": {
+    "start": "PORT=80 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
