@@ -9,3 +9,8 @@ Ensure docker and docker-compose are installed and then perform the following:
 3. CD into the new dir - `cd cisco-pss-api-chatbot`
 4. Bring up the project - `docker-compose up -d --build --remove-orphans`
 5. Verify the application now loads at http://localhost
+
+# Screenshots
+![Screenshot Processing](bot_ss1.JPG?raw=true)
+
+![Screenshot Results](bot_ss2.JPG?raw=true)
