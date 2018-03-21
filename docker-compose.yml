@@ -3,7 +3,7 @@ version: '2'
 services:
 
   esc-bot:
-    container_name: esc-bot
+    container_name: cisco-bot
     build:
       context: .
       dockerfile: Dockerfile
