@@ -20,6 +20,11 @@ You can modify the image of the bot by uploading your image file as bot.jpg and 
 # Chatbot Workflow
 ![Workflow Screenshot](workflow.png?raw=true)
 
+# TO DO/Enhancements
+* Add in Service Request info based on serial
+* Bug lookup information
+* End of Life/Support Information
+
 # Screenshots
 ![Screenshot Processing](bot_ss1.JPG?raw=true)
 
