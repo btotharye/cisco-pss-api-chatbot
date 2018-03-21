@@ -29,3 +29,9 @@ You can modify the image of the bot by uploading your image file as bot.jpg and 
 Feel free to join chat for questions or enhancement requests:
 
 https://geek-slack-invite.herokuapp.com/
+
+## Donate
+
+If you liked this project, you can donate to support it and new features
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=brianhh1230%40gmail%2ecom&lc=US&item_name=Geeked%20Out%20Solutions&no_note=0&cn=Add%20special%20instructions%20to%20the%20seller%3a&no_shipping=1&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
