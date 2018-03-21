@@ -25,7 +25,7 @@ class App extends Component {
                   customDelay="500"
                   botAvatar={botAvatar}
                   floating="true"
-                  width="1500px"
+                  width="700px"
                 />
               </ThemeProvider>
             </div>
