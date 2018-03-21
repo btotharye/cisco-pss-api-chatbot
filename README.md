@@ -17,3 +17,8 @@ Ensure docker and docker-compose are installed and then perform the following:
 ![Screenshot Processing](bot_ss1.JPG?raw=true)
 
 ![Screenshot Results](bot_ss2.JPG?raw=true)
+
+# Chat/Help
+Feel free to join chat for questions or enhancement requests:
+
+https://geek-slack-invite.herokuapp.com/
