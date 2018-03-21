@@ -1,5 +1,5 @@
 # cisco-pss-api-chatbot
-A chatbot built in react to interact with the Cisco partner API's
+A chatbot built in react to interact with the Cisco partner API's, based on https://lucasbassetti.com.br/react-simple-chatbot
 
 # Setup/Installation
 Ensure docker and docker-compose are installed and then perform the following:
@@ -9,6 +9,13 @@ Ensure docker and docker-compose are installed and then perform the following:
 3. CD into the new dir - `cd cisco-pss-api-chatbot`
 4. Bring up the project - `docker-compose up -d --build --remove-orphans`
 5. Verify the application now loads at http://localhost
+
+## Customization
+# Modify Bot Colors/Font
+To modify the colors of the bot you can modify the `src/config/chatstyles.js` file please see https://lucasbassetti.com.br/react-simple-chatbot/#/docs/themes for more information.
+
+# Modify Bot Image
+You can modify the image of the bot by uploading your image file as bot.jpg and putting it in the `https://github.com/btotharye/cisco-pss-api-chatbot/tree/master/src/assets/images` folder.  This is imported in from file `src/App.js` if you want to modify the file name, etc.
 
 # Chatbot Workflow
 ![Workflow Screenshot](workflow.png?raw=true)
