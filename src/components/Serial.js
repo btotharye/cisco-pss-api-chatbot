@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { warrantyChk } from '../utils/helpers';
 
 
 class SerialLookup extends Component {
@@ -55,6 +56,7 @@ class SerialLookup extends Component {
 
       // Setting up the warranty expired color coding for the output
       var warranty_str = output['warranty_end_date']
+      warrantyChk(warranty_str)
       var warranty_exp_vars = warranty_str.split("-");
       var warranty_exp_year = warranty_exp_vars[0]
       var warranty_exp_month = parseInt(warranty_exp_vars[1], 10) - 1
