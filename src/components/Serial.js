@@ -46,7 +46,8 @@ class SerialLookup extends Component {
       // Do stuff with the JSON
       var output = responseAsJson[0]['serial_numbers'][0]
       var software_suggest = responseAsJson[1]['suggested_version']
-      console.log("The software suggest is:" + software_suggest)
+      console.log("The software suggest is: " + software_suggest)
+      console.log("The software is: " + software_suggest[0])
       self.setState({ software_suggest: software_suggest });
       self.setState({ loading: false });
       self.setState({ data: output})

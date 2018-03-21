@@ -1,10 +1,11 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, make_response, current_app
+from datetime import timedelta
 from flask_cors import CORS
-app = Flask(__name__)
-CORS(app)
-
+from functools import update_wrapper
 import os
 import requests
+app = Flask(__name__)
+CORS(app)
 
 
 class CiscoSerial(object):
@@ -55,7 +56,9 @@ class CiscoSerial(object):
     def get_soft_suggest(self, pid):
         get_headers = {
             'Accept': 'application/json',
-            'Authorization': 'Bearer {}'.format(self.bearer_token)}
+            'Authorization': 'Bearer {}'.format(self.bearer_token),
+            'Access-Control-Allow-Origin': '*'
+            }
         output = requests.get('https://api.cisco.com/software/suggestion/v1.0/suggestions/software/' + pid,
                               headers=get_headers, verify=True)
         return output
@@ -79,7 +82,8 @@ class CiscoSerial(object):
     def get_sn_info(self, sn):
         get_headers = {
             'Accept': 'application/json',
-            'Authorization': 'Bearer {}'.format(self.bearer_token)}
+            'Authorization': 'Bearer {}'.format(self.bearer_token),
+            'Access-Control-Allow-Origin': '*'}
         output = requests.get('https://api.cisco.com/sn2info/v2/coverage/summary/serial_numbers/' + sn,
                               headers=get_headers, verify=True)
         return output
@@ -96,17 +100,15 @@ def cisco_lookup():
         sn_info = lookup.get_sn_info(sn)
         json_data = sn_info.json()
         pid = json_data['serial_numbers'][0]['base_pid_list'][0]['base_pid']
-        software_lookup = CiscoSerial()
-        software_info = software_lookup.get_soft_suggest(pid)
-        json_data_soft = software_info.json()
-        suggestion = json_data_soft['productList'][0]['suggestions']
-        if suggestion[0]['errorDetailsResponse'] == None:
-            print(suggestion)
-            soft_suggest = {'suggested_version': suggestion[0]['relDispName']}
-        else:
-            print(suggestion)
-            soft_suggest = {'suggested_version': suggestion[0]['errorDetailsResponse']['errorDescription']}
+        software_info = lookup.get_soft_suggest(pid)
+        print("This is the software info: {}".format(software_info.json()))
         print(json_data)
+        software_resp = software_info.json()
+        if software_resp['status'] == 'Failure':
+            soft_suggest = {'suggested_version': 'PID Not Found'}
+        else:
+            soft_suggest = {'suggested_version': software_resp['productList'][0]['suggestions'][0]['relDispName']}
+
         return jsonify(json_data, soft_suggest)
 
 
