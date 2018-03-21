@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import { warrantyChk, contractChk } from '../utils/helpers';
 
 class SerialLookup extends Component {
   constructor(props) {
@@ -46,7 +46,6 @@ class SerialLookup extends Component {
       var output = responseAsJson[0]['serial_numbers'][0]
       var software_suggest = responseAsJson[1]['suggested_version']
       console.log("The software suggest is: " + software_suggest)
-      console.log("The software is: " + software_suggest[0])
       self.setState({ software_suggest: software_suggest });
       self.setState({ loading: false });
       self.setState({ data: output})
@@ -56,42 +55,21 @@ class SerialLookup extends Component {
 
       // Setting up the warranty expired color coding for the output
       var warranty_str = output['warranty_end_date']
-      var warranty_exp_vars = warranty_str.split("-");
-      var warranty_exp_year = warranty_exp_vars[0]
-      var warranty_exp_month = parseInt(warranty_exp_vars[1], 10) - 1
-      var warranty_exp_day = warranty_exp_vars[2]
-      var warranty_today = new Date();
-      var warranty_exp = new Date();
-      warranty_exp.setFullYear(warranty_exp_year, warranty_exp_month, warranty_exp_day)
-      if (warranty_exp < warranty_today || warranty_str === null || warranty_str === "") {
+      var warranty_color = warrantyChk(warranty_str)
+      if (warranty_color === "red") {
         self.setState({ warranty_color: 'red'})
-        console.log("This warranty should be expired and red.")
-        console.log("Today's date is: " + warranty_today)
       } else {
         self.setState({ warranty_color: 'green'})
-        console.log("This warranty should still be active and green.")
-        console.log("The warranty date is: " + warranty_exp)
-        console.log("Today's date is: " + warranty_today)
       }
 
       // Setting up the contract coverage date color coding for output
       console.log(output['covered_product_line_end_date'])
       var contract_str = output['covered_product_line_end_date']
-      var contract_exp_vars = contract_str.split("-");
-      var contract_exp_year = contract_exp_vars[0]
-      var contract_exp_month = parseInt(contract_exp_vars[1], 10) -1
-      var contract_exp_day = contract_exp_vars[2]
-      var contract_today = new Date();
-      var contract_exp = new Date();
-      contract_exp.setFullYear(contract_exp_year, contract_exp_month, contract_exp_day)
-      if (contract_exp < contract_today || contract_str === null || contract_str === "") {
+      var contract_color = contractChk(contract_str)
+      if (contract_color === "red") {
         self.setState({ contract_color: 'red'})
-        console.log("The contract should be red and expired.")
-        console.log("The contract date is: " + contract_exp)
       } else {
         self.setState({ contract_color: 'green'})
-        console.log("The contract should be green and active")
-        console.log("The contract date is: " + contract_exp)
       }
 
     })
