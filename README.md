@@ -10,6 +10,9 @@ Ensure docker and docker-compose are installed and then perform the following:
 4. Bring up the project - `docker-compose up -d --build --remove-orphans`
 5. Verify the application now loads at http://localhost
 
+# Chatbot Workflow
+![Workflow Screenshot](workflow.png?raw=true)
+
 # Screenshots
 ![Screenshot Processing](bot_ss1.JPG?raw=true)
 
